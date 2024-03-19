@@ -1,0 +1,18 @@
+<h1 class="p-4 mb-3 text-white bg-primary d-flex justify-content-center">Mis pasatiempos</h1>
+<div class="container">
+    <div class="row mb-3">
+        <h2 class="col-12 display-2 d-flex justify-content-center">Uuuy! Algo anda mal</h2>
+    </div>
+    <div class="row mb-3">
+        <h3 class="col-12 d-flex justify-content-center">{{mensaje}}</h3>
+    </div>
+    <div class="row">
+        {{#if error}}
+            <div class="col-12">
+                <p class="mb-3">Status de error: {{error.status}}</p>
+                Trazado:
+                <pre>{{error.stack}}</pre></p>
+            </div>
+        {{/if}}
+    </div>
+</div>

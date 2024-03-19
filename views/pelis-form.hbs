@@ -1,0 +1,67 @@
+<h1 class="p-4 mb-3 text-white bg-primary d-flex justify-content-center">
+    {{#if peli}}
+    <p>Editar peli</p>
+    {{else}}
+    <p>Nueva peli</p>
+    {{/if}}
+</h1>
+<div class="container">
+    {{#if peli}}
+        <form action="/pelis/eliminar" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" value="{{peli.id}}" id="peliId" name="peliId" />
+
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalEliminar">
+                <i class="bi bi-trash" style="font-size: 1rem;"></i> Eliminar esta peli
+            </button>
+
+            <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarEtiqueta" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEliminarEtiqueta">Eliminar esta peli</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Esta acci&oacute;n no se puede deshacer ¿Eliminar?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mejor no</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {{/if}}
+    <form
+        action="{{#if peli}}/pelis/actualizar{{else}}/pelis/agregar{{/if}}"
+        method="post"
+        enctype="application/x-www-form-urlencoded"
+        >
+        {{#if peli}}
+        <input type="hidden" value="{{peli.id}}" id="idd" name="id" />
+        {{/if}}
+        <div class="row mb-3">
+            <label for="titulo" class="col-sm-2 col-form-label">T&iacute;tulo</label>
+            <div class="col-sm-10">
+                <input type="input" class="form-control" id="titulo" name="titulo" {{#if peli}}value="{{peli.titulo}}"{{/if}} />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="genero" class="col-sm-2 col-form-label">G&eacute;nero</label>
+            <div class="col-sm-10">
+                <input type="input" class="form-control" id="genero" name="genero" {{#if peli}}value="{{peli.genero}}"{{/if}} />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="calificacion" class="col-sm-2 col-form-label">Calificaci&oacute;n</label>
+            <div class="col-1">
+                <input type="input" class="form-control" id="calificacion" name="calificacion" {{#if peli}}value="{{peli.calificacion}}"{{/if}} />
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a href="/pelis" class="btn btn-danger">Regresar</a>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        </div>
+    </form>
+</div>

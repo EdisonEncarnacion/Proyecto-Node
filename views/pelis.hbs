@@ -1,0 +1,40 @@
+<h1 class="p-4 text-white bg-primary d-flex justify-content-center">Mis pelis</h1>
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-1">
+            <a href="/" data-bs-toggle="tooltip" title="Inicio">
+                <i class="bi-house-fill" style="font-size: 1.5rem; color: primary;"></i>
+            </a>
+        </div>
+        <div class="col-1">
+            <a href="/pelis/nueva" data-bs-toggle="tooltip" title="Agregar peli">
+                <i class="bi bi-file-plus-fill" style="font-size: 1.5rem; color: primary;"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row gy-4">
+        {{#each pelis}}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-center text-white bg-primary">
+                    {{this.titulo}}
+                </div>
+                <div class="card-body">
+                    <div class="mb-3 text-end">
+                        <a href="/pelis/{{this.id}}" class="btn btn-outline-secondary btn-sm " data-bs-toggle="tooltip"
+                            title="Editar">
+                            <i class="bi bi-pencil-square" style="font-size: 1rem; color: success;"></i>
+                        </a>
+                    </div>
+                    <h6 class="card-title text-secondary">G&eacute;nero: {{this.genero}}</h5>
+                        <h6 class="card-title text-secondary">Calificacion: {{this.calificacion}}</h5>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <p>No hay pelis. Agrega una ☝️</p>
+        {{/each}}
+    </div>

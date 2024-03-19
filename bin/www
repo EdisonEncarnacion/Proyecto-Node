@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+const http = require('http');
+const app = require('../app');
+
+// configurar el puerto en express
+const puerto = process.env.PUERTO
+app.set('port', puerto);
+
+// crear servidor HTTP
+var servidor = http.createServer(app);
+
+//empezar a escuchar por el puerto configurado
+servidor.listen(puerto);
+
+//reportar errores
+servidor.on('error', error => { throw error });
+
+//notificar inicio del servidor()
+servidor.on('listening', () => { console.log(`Servidor escuchando en puerto ${puerto}`) });
